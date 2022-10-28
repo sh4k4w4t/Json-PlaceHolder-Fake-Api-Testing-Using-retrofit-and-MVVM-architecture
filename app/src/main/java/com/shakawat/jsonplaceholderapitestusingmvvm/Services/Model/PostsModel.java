@@ -3,7 +3,7 @@ package com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Posts {
+public class PostsModel {
     @SerializedName("userId")
     @Expose
     private Integer userId;
