@@ -20,6 +20,13 @@
             tools:ignore="UsingOnClickInXml" />
 
         <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="/comments?postId=1"
+            android:onClick="ClickCommentsPostId1"
+            tools:ignore="UsingOnClickInXml" />
+
+        <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

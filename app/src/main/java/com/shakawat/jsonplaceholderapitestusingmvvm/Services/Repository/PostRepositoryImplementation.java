@@ -23,6 +23,7 @@ public class PostRepositoryImplementation implements PostsRepository{
     private static Context context;
     private List<PostsModel> postsModelList;
     private MutableLiveData mLiveData;
+    private RetrofitServices services;
 
     @SuppressLint("StaticFieldLeak")
     private static PostRepositoryImplementation instance;
@@ -39,9 +40,9 @@ public class PostRepositoryImplementation implements PostsRepository{
         if (mLiveData==null){
             mLiveData= new MutableLiveData();
         }
-        RetrofitServices services= RetrofitInstance.getRetrofit().create(RetrofitServices.class);
+        services= RetrofitInstance.getServices();
         Call<List<PostsModel>> call= services.responsePosts();
-        call.enqueue(new Callback<List<PostsModel>>() {
+        call.clone().enqueue(new Callback<List<PostsModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<PostsModel>> call, @NonNull Response<List<PostsModel>> response) {
                 postsModelList = response.body();

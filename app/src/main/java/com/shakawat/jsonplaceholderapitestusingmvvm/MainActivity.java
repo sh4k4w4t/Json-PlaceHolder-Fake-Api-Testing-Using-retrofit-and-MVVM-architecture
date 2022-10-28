@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.shakawat.jsonplaceholderapitestusingmvvm.View.UI.Albums;
 import com.shakawat.jsonplaceholderapitestusingmvvm.View.UI.Comments;
+import com.shakawat.jsonplaceholderapitestusingmvvm.View.UI.Comments_postId_1;
 import com.shakawat.jsonplaceholderapitestusingmvvm.View.UI.Photos;
 import com.shakawat.jsonplaceholderapitestusingmvvm.View.UI.Posts;
 import com.shakawat.jsonplaceholderapitestusingmvvm.View.UI.ToDos;
@@ -44,5 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void ClickUsers(View view) {
         startActivity(new Intent(getApplicationContext(), Users.class));
+    }
+
+    public void ClickCommentsPostId1(View view) {
+        startActivity(new Intent(getApplicationContext(), Comments_postId_1.class));
     }
 }
