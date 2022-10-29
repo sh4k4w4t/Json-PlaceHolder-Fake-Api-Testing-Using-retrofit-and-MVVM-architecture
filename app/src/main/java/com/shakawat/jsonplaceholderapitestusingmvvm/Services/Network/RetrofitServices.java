@@ -4,6 +4,7 @@ import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.AlbumModel;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.CommentModel;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.Comments_postId_1Model;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.PostsModel;
+import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.TodosModel;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface RetrofitServices {
 
     @GET("/albums")
     Call<List<AlbumModel>> getAllAlbumList();
+
+    @GET("/todos")
+    Call<List<TodosModel>> getAllTodosList();
 }
