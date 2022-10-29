@@ -7,12 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 
-import com.shakawat.jsonplaceholderapitestusingmvvm.R;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.CommentModel;
 import com.shakawat.jsonplaceholderapitestusingmvvm.View.Adapter.CommentAdapter;
-import com.shakawat.jsonplaceholderapitestusingmvvm.ViewModel.CommentViewModel;
+import com.shakawat.jsonplaceholderapitestusingmvvm.ViewModel.ViewModels;
 import com.shakawat.jsonplaceholderapitestusingmvvm.databinding.ActivityCommentsBinding;
 
 import java.util.List;
@@ -21,7 +19,7 @@ public class Comments extends AppCompatActivity {
     ActivityCommentsBinding binding;
     Context context;
     CommentAdapter adapter;
-    CommentViewModel viewModel;
+    ViewModels viewModel;
 
 
     @Override
@@ -33,7 +31,7 @@ public class Comments extends AppCompatActivity {
         LinearLayoutManager layoutManager= new LinearLayoutManager(this);
         binding.recycleViewIdComments.setLayoutManager(layoutManager);
 
-        viewModel= new ViewModelProvider(this).get(CommentViewModel.class);
+        viewModel= new ViewModelProvider(this).get(ViewModels.class);
         viewModel.getAllCommentList().observe(this, new Observer<List<CommentModel>>() {
             @Override
             public void onChanged(List<CommentModel> commentModels) {

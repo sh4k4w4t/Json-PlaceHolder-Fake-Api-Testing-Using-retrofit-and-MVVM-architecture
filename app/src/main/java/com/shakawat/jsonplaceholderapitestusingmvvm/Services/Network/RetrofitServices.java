@@ -1,5 +1,6 @@
 package com.shakawat.jsonplaceholderapitestusingmvvm.Services.Network;
 
+import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.AlbumModel;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.CommentModel;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.Comments_postId_1Model;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.PostsModel;
@@ -19,4 +20,7 @@ public interface RetrofitServices {
 
     @GET("/comments")
     Call<List<CommentModel>> getAllCommentList();
+
+    @GET("/albums")
+    Call<List<AlbumModel>> getAllAlbumList();
 }
