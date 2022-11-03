@@ -39,13 +39,18 @@ public class TodosRepositoryImple implements TodosRepository{
         call.clone().enqueue(new Callback<List<TodosModel>>() {
             @Override
             public void onResponse(Call<List<TodosModel>> call, Response<List<TodosModel>> response) {
-                todosModels= response.body();
-                todosLiveData.postValue(todosModels);
-                Log.d("TAG", "onResponse: Success TODOS");
+                if(response.isSuccessful()){
+                    todosModels= response.body();
+                    todosLiveData.postValue(todosModels);
+                    Log.d("TAG", "onResponse: Success TODOS");
+                }else {
+                    todosLiveData.postValue(null);
+                }
             }
 
             @Override
             public void onFailure(Call<List<TodosModel>> call, Throwable t) {
+                todosLiveData.postValue(null);
                 Log.d("TAG", "onFailure: Failed TODOS");
             }
         });

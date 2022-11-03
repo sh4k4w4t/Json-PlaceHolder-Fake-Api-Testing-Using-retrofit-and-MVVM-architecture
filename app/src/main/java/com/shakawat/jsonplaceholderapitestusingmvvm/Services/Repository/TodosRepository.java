@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface TodosRepository {
 
-    public MutableLiveData<List<TodosModel>> getAllTodos();
+    MutableLiveData<List<TodosModel>> getAllTodos();
 }

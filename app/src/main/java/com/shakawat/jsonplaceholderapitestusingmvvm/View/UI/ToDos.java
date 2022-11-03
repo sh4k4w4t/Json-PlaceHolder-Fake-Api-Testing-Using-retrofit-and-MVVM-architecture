@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.shakawat.jsonplaceholderapitestusingmvvm.R;
 import com.shakawat.jsonplaceholderapitestusingmvvm.Services.Model.TodosModel;
@@ -29,16 +31,29 @@ public class ToDos extends AppCompatActivity {
         binding= ActivityToDosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        vm= new ViewModelProvider(this).get(TodosVM.class);
+
+        binding.todosProgressbar.setVisibility(vm.setProgress(View.VISIBLE));
+
         recyclerView= binding.recycleViewTodos;
         LinearLayoutManager layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        vm= new ViewModelProvider(this).get(TodosVM.class);
+
         vm.allTOdos().observe(this, new Observer<List<TodosModel>>() {
             @Override
             public void onChanged(List<TodosModel> todosModels) {
-                adapter= new TodosAdapter(ToDos.this,todosModels);
-                recyclerView.setAdapter(adapter);
+                if (todosModels==null){
+                    vm.SetToast(ToDos.this,"Try again...");
+                    binding.todosProgressbar.setVisibility(vm.setProgress(View.GONE));
+                    finish();
+                }
+                else {
+                    adapter= new TodosAdapter(ToDos.this,todosModels);
+                    recyclerView.setAdapter(adapter);
+                    binding.todosProgressbar.setVisibility(vm.setProgress(View.GONE));
+                    vm.SetToast(ToDos.this,"Success...");
+                }
             }
         });
 

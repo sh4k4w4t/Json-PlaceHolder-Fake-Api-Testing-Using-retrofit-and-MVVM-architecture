@@ -1,6 +1,8 @@
 package com.shakawat.jsonplaceholderapitestusingmvvm.ViewModel;
 
 import android.app.Application;
+import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -23,5 +25,13 @@ public class TodosVM extends AndroidViewModel {
 
     public MutableLiveData<List<TodosModel>> allTOdos(){
         return todosRepository.getAllTodos();
+    }
+
+    public void SetToast(Context context,String text){
+        Toast.makeText(context, text+"", Toast.LENGTH_SHORT).show();
+    }
+
+    public int setProgress(int visibility){
+        return visibility;
     }
 }
